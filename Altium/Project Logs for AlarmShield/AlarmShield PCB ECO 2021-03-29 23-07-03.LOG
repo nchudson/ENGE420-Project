@@ -1,0 +1,27 @@
+Added Component: Designator=U5(QFN65P400X400X100-17N)
+Add component (AddParameter): Name = "Availability"; Value = "Good"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Check_prices"; Value = "https://www.snapeda.com/parts/TPS61090RSAR/Texas%20Instruments/view-part/51689/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "TPS61090RSAR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "VQFN-16 Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Purchase-URL"; Value = "https://pricing.snapeda.com/search/part/TPS61090RSAR/?ref=eda"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/TPS61090RSAR/Texas%20Instruments/view-part/51689/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VBUS_SYS_5V0 Pin=U5-1
+Added Pin To Net: NetName=NetL1_2 Pin=U5-3
+Added Pin To Net: NetName=NetL1_2 Pin=U5-4
+Added Pin To Net: NetName=GND Pin=U5-5
+Added Pin To Net: NetName=GND Pin=U5-6
+Added Pin To Net: NetName=GND Pin=U5-7
+Added Pin To Net: NetName=VBUS_BATT_3V7 Pin=U5-8
+Added Pin To Net: NetName=NetR26_1 Pin=U5-9
+Added Pin To Net: NetName=GND Pin=U5-10
+Added Pin To Net: NetName=NetR25_2 Pin=U5-11
+Added Pin To Net: NetName=NetQ6_1 Pin=U5-12
+Added Pin To Net: NetName=GND Pin=U5-13
+Added Pin To Net: NetName=NetR28_2 Pin=U5-14
+Added Pin To Net: NetName=VBUS_SYS_5V0 Pin=U5-15
+Added Pin To Net: NetName=VBUS_SYS_5V0 Pin=U5-16
+Added Pin To Net: NetName=GND Pin=U5-17
+Added Member To Class: ClassName=Power Member=Component U5 TPS61090RSAR

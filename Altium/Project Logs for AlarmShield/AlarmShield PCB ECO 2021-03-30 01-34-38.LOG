@@ -1,0 +1,32 @@
+Removed Pin From Net: NetName=LED_WAIT Pin=AD1-1
+Change Component Designator: OldDesignator=R22 NewDesignator=R23
+Change Component Designator: OldDesignator=R23 NewDesignator=R24
+Change Component Designator: OldDesignator=R24 NewDesignator=R25
+Change Component Designator: OldDesignator=R25 NewDesignator=R26
+Change Component Designator: OldDesignator=R26 NewDesignator=R27
+Change Component Designator: OldDesignator=R27 NewDesignator=R28
+Change Component Designator: OldDesignator=R28 NewDesignator=R29
+Change Component Designator: OldDesignator=R29 NewDesignator=R30
+Change Component Designator: OldDesignator=R30 NewDesignator=R31
+Change Component Designator: OldDesignator=R31 NewDesignator=R32
+Change Component Designator: OldDesignator=R32 NewDesignator=R33
+Change Component Designator: OldDesignator=R33 NewDesignator=R34
+Change Component Designator: OldDesignator=R34 NewDesignator=R35
+Added Component: Designator=R22(0603_RES_HD)
+Add component (AddParameter): Name = "GFUPartNo"; Value = "RC0603JR-0718RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "RC0603JR-0718RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "311-18GRCT-ND"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=QI_C\H\G\ Pin=AD1-1
+Added Pin To Net: NetName=VBUS_SYS_3V3 Pin=R22-1
+Added Pin To Net: NetName=QI_C\H\G\ Pin=R22-2
+Change Net Name : Old Net Name=NetR22_1 New Net Name=NetR23_1
+Change Net Name : Old Net Name=NetR25_2 New Net Name=NetR26_2
+Change Net Name : Old Net Name=NetR26_1 New Net Name=NetR27_1
+Change Net Name : Old Net Name=NetR27_1 New Net Name=NetR28_1
+Change Net Name : Old Net Name=NetR28_2 New Net Name=NetR29_2
+Change Net Name : Old Net Name=NetR32_1 New Net Name=NetR33_1
+Change Net Name : Old Net Name=NetR33_2 New Net Name=NetR34_2
+Added Member To Class: ClassName=Power Member=Component R35 1k

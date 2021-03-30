@@ -1,0 +1,56 @@
+Change Component Footprint: Designator=C5 Old Footprint=0805 New Footprint=0603
+Change Component Footprint: Designator=C10 Old Footprint=0805 New Footprint=0603
+Change Component Footprint: Designator=C12 Old Footprint=0805 New Footprint=0603
+Change Component Footprint: Designator=C14 Old Footprint=0805 New Footprint=0603
+Change Component Footprint: Designator=C15 Old Footprint=0805 New Footprint=0603
+Change Component Footprint: Designator=C19 Old Footprint=0805 New Footprint=0603
+Change Component Designator: OldDesignator=R6 NewDesignator=R7
+Change Component Designator: OldDesignator=R7 NewDesignator=R6
+Change component parameters: Designator = "C5" ("C5"); Footprint = "0805"; UniqueID = "\DWOBGOTR" ("\DWOBGOTR")
+Change component parameters (AddParameter): Name = "GFUPartNo"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer 1"; Value = "TDK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number 1"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "445-5067-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C10" ("C10"); Footprint = "0805"; UniqueID = "\GCCGJLKV" ("\GCCGJLKV")
+Change component parameters (AddParameter): Name = "GFUPartNo"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer 1"; Value = "TDK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number 1"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "445-5067-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C12" ("C12"); Footprint = "0805"; UniqueID = "\ZSDWJLPE" ("\ZSDWJLPE")
+Change component parameters (AddParameter): Name = "GFUPartNo"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer 1"; Value = "TDK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number 1"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "445-5067-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C14" ("C14"); Footprint = "0805"; UniqueID = "\JZZULUVR" ("\JZZULUVR")
+Change component parameters (AddParameter): Name = "GFUPartNo"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer 1"; Value = "TDK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number 1"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "445-5067-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C15" ("C15"); Footprint = "0805"; UniqueID = "\NUGHRPFV" ("\NUGHRPFV")
+Change component parameters (AddParameter): Name = "GFUPartNo"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer 1"; Value = "TDK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number 1"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "445-5067-1-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C19" ("C19"); Footprint = "0805"; UniqueID = "\ZDPWLAGC" ("\ZDPWLAGC")
+Change component parameters (AddParameter): Name = "GFUPartNo"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer 1"; Value = "TDK"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer Part Number 1"; Value = "C1608C0G1H361J"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PackageReference"; Value = "0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Supplier Part Number 1"; Value = "445-5067-1-ND"; VariantName = "[No Variations]"
