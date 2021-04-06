@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=NetP5_1 Pin=SW1-5
+Removed Pin From Net: NetName=VBUS_BATT_3V7 Pin=SW1-6
+Added Pin To Net: NetName=NetP5_1 Pin=SW1-2
+Added Pin To Net: NetName=NetP1_V0 Pin=R1-2
+Added Net: Name=NetP1_V0
+Added Member To Class: ClassName=Power Member=Component R22 10k
+Added Member To Class: ClassName=Power Member=Component R23 150
+Added Member To Class: ClassName=Power Member=Component R24 47
+Added Member To Class: ClassName=Power Member=Component R26 330k
+Added Member To Class: ClassName=Power Member=Component R28 1.8M
+Added Member To Class: ClassName=Power Member=Component R30 330k
+Added Member To Class: ClassName=Power Member=Component R31 50k
+Added Member To Class: ClassName=Power Member=Component R32 1.5k
+Added Member To Class: ClassName=Power Member=Component R34 470

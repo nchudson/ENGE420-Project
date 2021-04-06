@@ -1,0 +1,12 @@
+Added Pin To Net: NetName=D4_HV Pin=P1-DB4
+Added Pin To Net: NetName=D5_HV Pin=P1-DB5
+Added Pin To Net: NetName=D6_HV Pin=P1-DB6
+Added Pin To Net: NetName=D7_HV Pin=P1-DB7
+Added Pin To Net: NetName=EN_HV Pin=P1-E
+Added Pin To Net: NetName=NetP1_LED+ Pin=P1-LED+
+Added Pin To Net: NetName=NetP1_LED- Pin=P1-LED-
+Added Pin To Net: NetName=GND Pin=P1-R/W
+Added Pin To Net: NetName=RS_HV Pin=P1-RS
+Added Pin To Net: NetName=NetP1_V0 Pin=P1-V0
+Added Pin To Net: NetName=GND Pin=P1-VDD
+Added Pin To Net: NetName=VBUS_SYS_5V0 Pin=P1-VSS
