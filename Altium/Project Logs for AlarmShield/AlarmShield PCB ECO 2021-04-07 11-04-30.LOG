@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=GND Pin=P1-VDD
+Removed Pin From Net: NetName=VBUS_SYS_5V0 Pin=P1-VSS
+Added Pin To Net: NetName=VBUS_SYS_5V0 Pin=P1-VDD
+Added Pin To Net: NetName=GND Pin=P1-VSS
