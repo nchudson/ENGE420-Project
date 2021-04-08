@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=BTN_SET Pin=AD1-2
+Removed Pin From Net: NetName=BTN_SEL Pin=AD1-3
+Removed Pin From Net: NetName=BTN_MINUS Pin=AD1-4
+Removed Pin From Net: NetName=BTN_PLUS Pin=AD1-5
+Removed Member From Class: ClassName=AlarmShield Member=C5
+Added Pin To Net: NetName=BTN_PLUS Pin=AD1-2
+Added Pin To Net: NetName=BTN_MINUS Pin=AD1-3
+Added Pin To Net: NetName=BTN_SEL Pin=AD1-4
+Added Pin To Net: NetName=BTN_SET Pin=AD1-5
+Added Member To Class: ClassName=AlarmShield Member=Component C1 1uF
+Added Member To Class: ClassName=AlarmShield Member=Component C2 .1uF
+Added Member To Class: ClassName=Power Member=Component C4 10uF
+Added Member To Class: ClassName=Power Member=Component C6 0.47uF
+Added Member To Class: ClassName=Power Member=Component C8 10uF
+Added Member To Class: ClassName=Power Member=Component C10 0.1uF
+Added Member To Class: ClassName=Power Member=Component C12 C-NP
+Added Member To Class: ClassName=Power Member=Component C14 C-NP
+Added Member To Class: ClassName=Power Member=Component C15 10nF
+Added Member To Class: ClassName=Power Member=Component C17 2000pF
+Added Member To Class: ClassName=Power Member=Component C19 C-NP
+Added Member To Class: ClassName=Power Member=Component C21 2.2uF
+Added Member To Class: ClassName=Power Member=Component C23 10uF
+Added Member To Class: ClassName=Power Member=Component C25 10uF

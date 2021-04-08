@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=BTN_SET Pin=AD1-2
+Removed Pin From Net: NetName=BTN_SEL Pin=AD1-3
+Removed Pin From Net: NetName=BTN_MINUS Pin=AD1-4
+Removed Pin From Net: NetName=BTN_PLUS Pin=AD1-5
+Added Pin To Net: NetName=BTN_PLUS Pin=AD1-2
+Added Pin To Net: NetName=BTN_MINUS Pin=AD1-3
+Added Pin To Net: NetName=BTN_SEL Pin=AD1-4
+Added Pin To Net: NetName=BTN_SET Pin=AD1-5
