@@ -1,0 +1,5 @@
+Added Component: Designator=R1(FP-3386T-MFG)
+Added Pin To Net: NetName=VBUS_SYS_5V0 Pin=R1-1
+Added Pin To Net: NetName=NetP1_V0 Pin=R1-2
+Added Pin To Net: NetName=GND Pin=R1-3
+Added Member To Class: ClassName=AlarmShield Member=Component R1 100k

@@ -1,0 +1,85 @@
+Net Status Report
+Filename     : \\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc
+Date         : 4/8/2021
+Time         : 3:20:12 PM
+Time Elapsed : 00:00:00
+
+Nets, Layer, Length
+    ADXL_IRQ1, Signal Layers Only, 0mils
+    ADXL_IRQ1_HV, Signal Layers Only, 0mils
+    ADXL_IRQ2, Signal Layers Only, 0mils
+    ADXL_IRQ2_HV, Signal Layers Only, 0mils
+    BTN_MINUS, Signal Layers Only, 1091.644mils
+    BTN_PLUS, Signal Layers Only, 597.838mils
+    BTN_SEL, Signal Layers Only, 1755.481mils
+    BTN_SET, Signal Layers Only, 2263.533mils
+    BT_CS, Signal Layers Only, 4924.924mils
+    BT_DFU, Signal Layers Only, 0mils
+    BT_IRQ, Signal Layers Only, 4866.812mils
+    BT_RST, Signal Layers Only, 0mils
+    BUZZER, Signal Layers Only, 3511.107mils
+    D4_HV, Signal Layers Only, 773.568mils
+    D5_HV, Signal Layers Only, 859.693mils
+    D6_HV, Signal Layers Only, 934.103mils
+    D7_HV, Signal Layers Only, 1008.512mils
+    EN_HV, Signal Layers Only, 552.059mils
+    GND, Signal Layers Only, 6532.581mils
+    LED_DISP, Signal Layers Only, 1289.148mils
+    LED_WAIT, Signal Layers Only, 4599.54mils
+    MISO, Signal Layers Only, 5330.193mils
+    MOSI, Signal Layers Only, 5218.625mils
+    NetC11_1, Signal Layers Only, 108.524mils
+    NetC13_1, Signal Layers Only, 112.449mils
+    NetC15_1, Signal Layers Only, 258.132mils
+    NetC15_2, Signal Layers Only, 1073.33mils
+    NetC16_1, Signal Layers Only, 211.552mils
+    NetC20_1, Signal Layers Only, 227.817mils
+    NetC6_1, Signal Layers Only, 90.569mils
+    NetC6_2, Signal Layers Only, 1178.932mils
+    NetC7_2, Signal Layers Only, 256.586mils
+    NetC8_2, Signal Layers Only, 748.446mils
+    NetD1_1, Signal Layers Only, 750.839mils
+    NetD1_2, Signal Layers Only, 114.086mils
+    NetD2_1, Signal Layers Only, 301.384mils
+    NetD3_1, Signal Layers Only, 199.006mils
+    NetD4_2, Signal Layers Only, 120.489mils
+    NetD5_1, Signal Layers Only, 122.38mils
+    NetD6_2, Signal Layers Only, 85.087mils
+    NetL1_2, Signal Layers Only, 446.482mils
+    NetLS1_N, Signal Layers Only, 298.99mils
+    NetP1_LED+, Signal Layers Only, 132.299mils
+    NetP1_LED-, Signal Layers Only, 149.157mils
+    NetP1_V0, Signal Layers Only, 2364.874mils
+    NetP5_1, Signal Layers Only, 278.321mils
+    NetQ6_1, Signal Layers Only, 631.718mils
+    NetQ6_3, Signal Layers Only, 73.606mils
+    NetR16_2, Signal Layers Only, 60mils
+    NetR17_2, Signal Layers Only, 742.8mils
+    NetR18_1, Signal Layers Only, 86.697mils
+    NetR18_2, Signal Layers Only, 216.569mils
+    NetR21_1, Signal Layers Only, 81.772mils
+    NetR23_1, Signal Layers Only, 57.223mils
+    NetR26_2, Signal Layers Only, 552.029mils
+    NetR27_1, Signal Layers Only, 159.45mils
+    NetR28_1, Signal Layers Only, 165.764mils
+    NetR29_2, Signal Layers Only, 302.382mils
+    NetR2_1, Signal Layers Only, 414.058mils
+    NetR33_1, Signal Layers Only, 319.283mils
+    NetR34_2, Signal Layers Only, 711.213mils
+    NetR3_1, Signal Layers Only, 368.445mils
+    NetR4_1, Signal Layers Only, 384.752mils
+    NetR5_1, Signal Layers Only, 425.083mils
+    QI_C\H\G\, Signal Layers Only, 3129.817mils
+    RS_HV, Signal Layers Only, 624.302mils
+    SCK, Signal Layers Only, 5485.193mils
+    SCL_HV, Signal Layers Only, 749.357mils
+    SCL_LV, Signal Layers Only, 3494.685mils
+    SDA_HV, Signal Layers Only, 573.923mils
+    SDA_LV, Signal Layers Only, 4025.203mils
+    VBUS_BATT_3V7, Signal Layers Only, 6201.934mils
+    VBUS_BKP_3V0, Signal Layers Only, 1739.214mils
+    VBUS_CHRG_5V0, Signal Layers Only, 1576.509mils
+    VBUS_IOREF, Signal Layers Only, 2328.521mils
+    VBUS_SYS_3V3, Signal Layers Only, 967.183mils
+    VBUS_SYS_5V0, Signal Layers Only, 7528.718mils
+count : 77

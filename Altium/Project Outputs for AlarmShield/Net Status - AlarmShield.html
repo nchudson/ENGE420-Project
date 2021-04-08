@@ -1,0 +1,674 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body { 
+			font-family : segoe ui;
+		}
+
+		td, th {  
+			padding: 0.5em;
+			text-align : left;
+		}
+		th { 
+			background-color : #EEEEEE;
+		
+		}
+		th.column1, td.column1 { 
+			width : 50%; 
+		}
+
+        th.column2, td.column2 {
+            width : 25%;
+        }
+
+		table { 
+			width : 100%; 
+            font-size: 0.9em;
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 5em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script><title>Net Status Report</title>
+</head>
+<body onload="document.getElementById('radio_mil').click()"><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">4/8/2021</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">3:20:12 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc" class="file"><acronym title="\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc">\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table><a name="IDVZF3FVZNYDIDEBFXV4KX55X2NFQXFTBXBZSM1UO3KV2FEHIDMZ3M"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">ADXL_IRQ1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2607.047mil|Location2.X=2672.953mil|Location1.Y=3197.047mil|Location2.Y=3262.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2607.047mil|Location2.X=2672.953mil|Location1.Y=3197.047mil|Location2.Y=3262.953mil|Absolute=True">ADXL_IRQ1_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">ADXL_IRQ2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2707.047mil|Location2.X=2772.953mil|Location1.Y=3197.047mil|Location2.Y=3262.953mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2707.047mil|Location2.X=2772.953mil|Location1.Y=3197.047mil|Location2.Y=3262.953mil|Absolute=True">ADXL_IRQ2_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">BTN_MINUS</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10916436">1091.644mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">BTN_PLUS</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5978377">597.838mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">BTN_SEL</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="17554811">1755.481mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1638.583mil|Location2.X=3632.953mil|Location1.Y=1083.622mil|Location2.Y=1529.173mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1638.583mil|Location2.X=3632.953mil|Location1.Y=1083.622mil|Location2.Y=1529.173mil|Absolute=True">BTN_SET</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="22635331">2263.533mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2807.047mil|Location2.X=4855mil|Location1.Y=1087.52mil|Location2.Y=3605mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2807.047mil|Location2.X=4855mil|Location1.Y=1087.52mil|Location2.Y=3605mil|Absolute=True">BT_CS</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="49249242">4924.924mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4477.52mil|Location2.X=4542.48mil|Location1.Y=1087.52mil|Location2.Y=1152.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4477.52mil|Location2.X=4542.48mil|Location1.Y=1087.52mil|Location2.Y=1152.48mil|Absolute=True">BT_DFU</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2967.047mil|Location2.X=4885mil|Location1.Y=1087.52mil|Location2.Y=3620mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2967.047mil|Location2.X=4885mil|Location1.Y=1087.52mil|Location2.Y=3620mil|Absolute=True">BT_IRQ</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="48668124">4866.812mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4577.52mil|Location2.X=4642.48mil|Location1.Y=1087.52mil|Location2.Y=1152.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4577.52mil|Location2.X=4642.48mil|Location1.Y=1087.52mil|Location2.Y=1152.48mil|Absolute=True">BT_RST</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.327mil|Location2.X=3432.953mil|Location1.Y=2256.024mil|Location2.Y=3515mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1258.327mil|Location2.X=3432.953mil|Location1.Y=2256.024mil|Location2.Y=3515mil|Absolute=True">BUZZER</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="35111069">3511.107mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">D4_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7735680">773.568mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2970.984mil|Location2.X=3454.449mil|Location1.Y=2229.882mil|Location2.Y=2814.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2970.984mil|Location2.X=3454.449mil|Location1.Y=2229.882mil|Location2.Y=2814.449mil|Absolute=True">D5_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="8596932">859.693mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2996.575mil|Location2.X=3554.449mil|Location1.Y=2229.882mil|Location2.Y=2814.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2996.575mil|Location2.X=3554.449mil|Location1.Y=2229.882mil|Location2.Y=2814.449mil|Absolute=True">D6_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9341026">934.103mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">D7_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10085121">1008.512mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">EN_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5520589">552.059mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1329.995mil|Location2.X=4742.48mil|Location1.Y=1087.52mil|Location2.Y=3481.693mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1329.995mil|Location2.X=4742.48mil|Location1.Y=1087.52mil|Location2.Y=3481.693mil|Absolute=True">GND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="65325806">6532.581mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3047.756mil|Location2.X=4048.779mil|Location1.Y=2229.882mil|Location2.Y=2825.839mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3047.756mil|Location2.X=4048.779mil|Location1.Y=2229.882mil|Location2.Y=2825.839mil|Absolute=True">LED_DISP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="12891484">1289.148mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3067.047mil|Location2.X=4855mil|Location1.Y=1946.024mil|Location2.Y=3565.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3067.047mil|Location2.X=4855mil|Location1.Y=1946.024mil|Location2.Y=3565.119mil|Absolute=True">LED_WAIT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="45995400">4599.54mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2407.047mil|Location2.X=4775mil|Location1.Y=1087.52mil|Location2.Y=3575mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2407.047mil|Location2.X=4775mil|Location1.Y=1087.52mil|Location2.Y=3575mil|Absolute=True">MISO</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="53301933">5330.193mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2507.047mil|Location2.X=4815mil|Location1.Y=1087.52mil|Location2.Y=3590mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2507.047mil|Location2.X=4815mil|Location1.Y=1087.52mil|Location2.Y=3590mil|Absolute=True">MOSI</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="52186246">5218.625mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC11_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1085238">108.524mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC13_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1124486">112.449mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC15_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2581324">258.132mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC15_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10733301">1073.33mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC16_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2115522">211.552mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC20_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2278173">227.817mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC6_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="905694">90.569mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC6_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="11789324">1178.932mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC7_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2565859">256.586mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetC8_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7484458">748.446mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3620.433mil|Location2.X=3814.171mil|Location1.Y=1177.52mil|Location2.Y=1893.976mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3620.433mil|Location2.X=3814.171mil|Location1.Y=1177.52mil|Location2.Y=1893.976mil|Absolute=True">NetD1_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7508394">750.839mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3738.543mil|Location2.X=3856.575mil|Location1.Y=1177.52mil|Location2.Y=1319.173mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3738.543mil|Location2.X=3856.575mil|Location1.Y=1177.52mil|Location2.Y=1319.173mil|Absolute=True">NetD1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1140858">114.086mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3013839">301.384mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1990062">199.006mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD4_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1204892">120.489mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD5_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1223800">122.38mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD6_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="850870">85.087mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetL1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4464816">446.482mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetLS1_N</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2989902">298.99mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetP1_LED+</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1322990">132.299mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3785.551mil|Location2.X=3973.976mil|Location1.Y=2745.551mil|Location2.Y=2825.839mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3785.551mil|Location2.X=3973.976mil|Location1.Y=2745.551mil|Location2.Y=2825.839mil|Absolute=True">NetP1_LED-</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1491571">149.157mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1260mil|Location2.X=2554.449mil|Location1.Y=1235.394mil|Location2.Y=2814.449mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1260mil|Location2.X=2554.449mil|Location1.Y=1235.394mil|Location2.Y=2814.449mil|Absolute=True">NetP1_V0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="23648739">2364.874mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetP5_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2783210">278.321mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetQ6_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6317182">631.718mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetQ6_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="736055">73.606mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR16_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="600000">60mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR17_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7428001">742.8mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR18_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="866965">86.697mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR18_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2165686">216.569mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR21_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="817716">81.772mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR23_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="572232">57.223mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR26_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5520287">552.029mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR27_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1594495">159.45mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR28_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1657643">165.764mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR29_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3023821">302.382mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR2_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4140575">414.058mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR33_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3192831">319.283mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR34_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7112126">711.213mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR3_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3684446">368.445mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR4_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3847521">384.752mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR5_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4250830">425.083mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">QI_C\H\G\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="31298168">3129.817mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">RS_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6243017">624.302mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2307.047mil|Location2.X=4745mil|Location1.Y=1087.52mil|Location2.Y=3555mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2307.047mil|Location2.X=4745mil|Location1.Y=1087.52mil|Location2.Y=3555mil|Absolute=True">SCK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="54851932">5485.193mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">SCL_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7493574">749.357mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1907.047mil|Location2.X=4643.779mil|Location1.Y=2915mil|Location2.Y=3538.071mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1907.047mil|Location2.X=4643.779mil|Location1.Y=2915mil|Location2.Y=3538.071mil|Absolute=True">SCL_LV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="34946851">3494.685mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">SDA_HV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5739232">573.923mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2007.047mil|Location2.X=4738.137mil|Location1.Y=2915mil|Location2.Y=3550.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2007.047mil|Location2.X=4738.137mil|Location1.Y=2915mil|Location2.Y=3550.119mil|Absolute=True">SDA_LV</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="40252032">4025.203mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1215.236mil|Location2.X=3280mil|Location1.Y=1165.236mil|Location2.Y=3260.945mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1215.236mil|Location2.X=3280mil|Location1.Y=1165.236mil|Location2.Y=3260.945mil|Absolute=True">VBUS_BATT_3V7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="62019341">6201.934mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4254.842mil|Location2.X=4815mil|Location1.Y=2027.547mil|Location2.Y=3329.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4254.842mil|Location2.X=4815mil|Location1.Y=2027.547mil|Location2.Y=3329.764mil|Absolute=True">VBUS_BKP_3V0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="17392141">1739.214mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">VBUS_CHRG_5V0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="15765088">1576.509mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">VBUS_IOREF</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="23285213">2328.521mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1577.284mil|Location2.X=4842.48mil|Location1.Y=1087.52mil|Location2.Y=3502.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1577.284mil|Location2.X=4842.48mil|Location1.Y=1087.52mil|Location2.Y=3502.52mil|Absolute=True">VBUS_SYS_3V3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9671829">967.183mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1325.394mil|Location2.X=3696.575mil|Location1.Y=1235.394mil|Location2.Y=3034.764mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=\\mcse-files1\studentfiles$\nhudson18\Documents\GitHub\ENGE420-Project\Altium\AlarmShield.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1325.394mil|Location2.X=3696.575mil|Location1.Y=1235.394mil|Location2.Y=3034.764mil|Absolute=True">VBUS_SYS_5V0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="75287177">7528.718mils
+			</a></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
