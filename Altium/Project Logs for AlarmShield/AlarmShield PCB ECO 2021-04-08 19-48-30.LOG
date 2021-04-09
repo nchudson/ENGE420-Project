@@ -1,0 +1,27 @@
+Removed Pin From Net: NetName=QI_C\H\G\ Pin=R20-2
+Removed Pin From Net: NetName=QI_C\H\G\ Pin=U4-7
+Added Component: Designator=R?(0603_RES_HD)
+Add component (AddParameter): Name = "GFUPartNo"; Value = "RC0603JR-0718RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "RC0603JR-0718RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "311-18GRCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R?(0805_RES_HD)
+Add component (AddParameter): Name = "GFUPartNo"; Value = "RC0805FR-07100RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "RC0805FR-07100RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "311-100CRCT-ND"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=QI_C\H\G\ Pin=R?-1
+Added Pin To Net: NetName=NetQ6_3 Pin=R?-2
+Added Pin To Net: NetName=BATT_LOW Pin=AD1-6
+Added Pin To Net: NetName=BATT_LOW Pin=R?-1
+Added Net: Name=BATT_LOW
+Added Pin To Net: NetName=NetR20_2 Pin=R20-2
+Added Pin To Net: NetName=NetR20_2 Pin=R?-2
+Added Pin To Net: NetName=NetR20_2 Pin=U4-7
+Added Net: Name=NetR20_2
+Added Member To Class: ClassName=Power Member=Component R? 0
+Added Member To Class: ClassName=Power Member=Component R? 0

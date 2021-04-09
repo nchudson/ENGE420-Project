@@ -1,0 +1,53 @@
+Removed Pin From Net: NetName=QI_C\H\G\ Pin=R20-2
+Removed Pin From Net: NetName=QI_C\H\G\ Pin=U4-7
+Change Component Footprint: Designator=D1 Old Footprint=1206_A New Footprint=1206_A_LED
+Change Component Footprint: Designator=D2 Old Footprint=1206_A New Footprint=1206_A_LED
+Change Component Footprint: Designator=D3 Old Footprint=1206_A New Footprint=1206_A_LED
+Change Component Footprint: Designator=D4 Old Footprint=1206_A New Footprint=1206_A_LED
+Change Component Footprint: Designator=D5 Old Footprint=1206_A New Footprint=1206_A_LED
+Change Component Footprint: Designator=D6 Old Footprint=1206_A New Footprint=1206_A_LED
+Change Component Comment : Designator=D1 Old Comment=Red New Comment=Blue
+Change Component Comment : Designator=D4 Old Comment=Red New Comment=Yellow
+Change Managed Component Library Link : Designator=D1 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=E5477181-6731-4952-824C-BD435045E384 New ItemGUID=FA84AB4B-1AC4-4667-B67F-C194F1594E69 Old RevisionGUID=29493B4D-56E9-45E7-8651-CD38243513AB New RevisionGUID=B3A86185-37D6-4EE2-89C5-B0053F70936B
+Change Managed Component Library Link : Designator=D2 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=60182C93-8220-4CF4-B15B-DD386295B8E0 New ItemGUID=FA84AB4B-1AC4-4667-B67F-C194F1594E69 Old RevisionGUID=B4BD6D51-593C-461A-B46B-8DB8CB429A1C New RevisionGUID=11B3FE8D-BC94-4E93-8625-34FDD9DB903D
+Change Managed Component Library Link : Designator=D3 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=F5BDC95A-B73A-4D1E-9A3C-AF7B0641D4D2 New ItemGUID=FA84AB4B-1AC4-4667-B67F-C194F1594E69 Old RevisionGUID=42845A3E-2F4B-4967-AE66-FBFE31FE987B New RevisionGUID=11B3FE8D-BC94-4E93-8625-34FDD9DB903D
+Change Managed Component Library Link : Designator=D4 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=E5477181-6731-4952-824C-BD435045E384 New ItemGUID=FA84AB4B-1AC4-4667-B67F-C194F1594E69 Old RevisionGUID=29493B4D-56E9-45E7-8651-CD38243513AB New RevisionGUID=11B3FE8D-BC94-4E93-8625-34FDD9DB903D
+Change Managed Component Library Link : Designator=D5 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=60182C93-8220-4CF4-B15B-DD386295B8E0 New ItemGUID=FA84AB4B-1AC4-4667-B67F-C194F1594E69 Old RevisionGUID=B4BD6D51-593C-461A-B46B-8DB8CB429A1C New RevisionGUID=11B3FE8D-BC94-4E93-8625-34FDD9DB903D
+Change Managed Component Library Link : Designator=D6 Old VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 New VaultGUID=B7D15EC3-160A-466F-A46C-7801FE6295A7 Old ItemGUID=86E17560-A4C8-4FA7-AFA9-2BF65FEC5EAE New ItemGUID=FA84AB4B-1AC4-4667-B67F-C194F1594E69 Old RevisionGUID=465483F9-DDAD-4104-B4C5-2BDBC7053C65 New RevisionGUID=11B3FE8D-BC94-4E93-8625-34FDD9DB903D
+Change component parameters: Designator = "D1" ("D1"); Footprint = "1206_A"; UniqueID = "\HPXCJGVU" ("\HPXCJGVU")
+Change component parameters: Designator = "D2" ("D2"); Footprint = "1206_A"; UniqueID = "\YSJELFAF" ("\YSJELFAF")
+Change component parameters: Designator = "D3" ("D3"); Footprint = "1206_A"; UniqueID = "\MODKLZJL" ("\MODKLZJL")
+Change component parameters: Designator = "D4" ("D4"); Footprint = "1206_A"; UniqueID = "\XANKFLZP" ("\XANKFLZP")
+Change component parameters: Designator = "D5" ("D5"); Footprint = "1206_A"; UniqueID = "\XDHSNSDY" ("\XDHSNSDY")
+Change component parameters: Designator = "D6" ("D6"); Footprint = "1206_A"; UniqueID = "\WEVVMXJO" ("\WEVVMXJO")
+Added Component: Designator=R?(0805_RES_HD)
+Add component (AddParameter): Name = "GFUPartNo"; Value = "RC0805FR-07100RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "RC0805FR-07100RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "311-100CRCT-ND"; VariantName = "[No Variations]"
+Added Component: Designator=R?(0603_RES_HD)
+Add component (AddParameter): Name = "GFUPartNo"; Value = "RC0603JR-0718RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer 1"; Value = "Yageo"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer Part Number 1"; Value = "RC0603JR-0718RL"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Type"; Value = "SMT"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier 1"; Value = "Digi-Key"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Part Number 1"; Value = "311-18GRCT-ND"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=QI_C\H\G\ Pin=R?-1
+Added Pin To Net: NetName=NetQ6_3 Pin=R?-2
+Added Pin To Net: NetName=BATT_LOW Pin=AD1-6
+Added Pin To Net: NetName=BATT_LOW Pin=R?-1
+Added Net: Name=BATT_LOW
+Added Pin To Net: NetName=NetR20_2 Pin=R20-2
+Added Pin To Net: NetName=NetR20_2 Pin=R?-2
+Added Pin To Net: NetName=NetR20_2 Pin=U4-7
+Added Net: Name=NetR20_2
+Added Member To Class: ClassName=AlarmShield Member=Component D1 Blue
+Added Member To Class: ClassName=Power Member=Component D2 Yellow
+Added Member To Class: ClassName=Power Member=Component D3 Blue
+Added Member To Class: ClassName=Power Member=Component D4 Yellow
+Added Member To Class: ClassName=Power Member=Component D5 Yellow
+Added Member To Class: ClassName=Power Member=Component D6 Blue
+Added Member To Class: ClassName=Power Member=Component R? 0
+Added Member To Class: ClassName=Power Member=Component R? 0

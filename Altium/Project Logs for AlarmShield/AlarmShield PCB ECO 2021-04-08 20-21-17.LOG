@@ -1,0 +1,26 @@
+Removed Member From Class: ClassName=Power Member=R?
+Change Component Designator: OldDesignator=R22 NewDesignator=R23
+Change Component Designator: OldDesignator=R23 NewDesignator=R24
+Change Component Designator: OldDesignator=R24 NewDesignator=R25
+Change Component Designator: OldDesignator=R25 NewDesignator=R26
+Change Component Designator: OldDesignator=R26 NewDesignator=R27
+Change Component Designator: OldDesignator=R27 NewDesignator=R28
+Change Component Designator: OldDesignator=R28 NewDesignator=R29
+Change Component Designator: OldDesignator=R29 NewDesignator=R30
+Change Component Designator: OldDesignator=R30 NewDesignator=R31
+Change Component Designator: OldDesignator=R31 NewDesignator=R32
+Change Component Designator: OldDesignator=R32 NewDesignator=R34
+Change Component Designator: OldDesignator=R33 NewDesignator=R35
+Change Component Designator: OldDesignator=R34 NewDesignator=R36
+Change Component Designator: OldDesignator=R35 NewDesignator=R37
+Change Component Designator: OldDesignator=R? NewDesignator=R22
+Change Component Designator: OldDesignator=R? NewDesignator=R33
+Change Net Name : Old Net Name=NetR23_1 New Net Name=NetR24_1
+Change Net Name : Old Net Name=NetR26_2 New Net Name=NetR27_2
+Change Net Name : Old Net Name=NetR27_1 New Net Name=NetR28_1
+Change Net Name : Old Net Name=NetR28_1 New Net Name=NetR29_1
+Change Net Name : Old Net Name=NetR29_2 New Net Name=NetR30_2
+Change Net Name : Old Net Name=NetR33_1 New Net Name=NetR35_1
+Change Net Name : Old Net Name=NetR34_2 New Net Name=NetR36_2
+Added Member To Class: ClassName=Power Member=Component R36 470
+Added Member To Class: ClassName=Power Member=Component R37 1k
