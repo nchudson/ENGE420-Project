@@ -2,102 +2,6 @@
 FileName = AlarmShield.GBR
 AutoAperture = True
 *************************************************************
-Generating : Bottom Layer
-      File : AlarmShield.GBL
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D13
-    D15
-    D56
-    D57
-    D95
-    D97
-    D98
-    D99
-    D100
-    D101
-    D102
-    D103
-    D104
-    D105
-    D106
-    D107
-    D108
-    D109
-*************************************************************
-
-*************************************************************
-Generating : Top Layer
-      File : AlarmShield.GTL
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D13
-    D15
-    D24
-    D34
-    D35
-    D37
-    D38
-    D42
-    D43
-    D48
-    D49
-    D50
-    D56
-    D57
-    D69
-    D70
-    D71
-    D72
-    D73
-    D74
-    D75
-    D76
-    D77
-    D78
-    D79
-    D80
-    D81
-    D82
-    D83
-    D84
-    D85
-    D86
-    D87
-    D88
-    D89
-    D90
-    D91
-    D92
-    D93
-    D94
-    D95
-    D96
-    D97
-    D98
-    D99
-    D100
-    D101
-    D102
-    D103
-    D104
-    D105
-    D106
-    D107
-    D108
-*************************************************************
-
-*************************************************************
 Generating : Keep-Out Layer
       File : AlarmShield.GKO
 
@@ -105,14 +9,18 @@ Generating : Keep-Out Layer
 
 
 Used DCodes :
-    D15
+    D47
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : AlarmShield.GTO
+Generating : Top Paste
+      File : AlarmShield.GTP
 
-    Adding Layer      : Top Overlay
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
 
 
 Used DCodes :
@@ -125,59 +33,6 @@ Used DCodes :
     D16
     D17
     D18
-*************************************************************
-
-*************************************************************
-Generating : Bottom Solder
-      File : AlarmShield.GBS
-
-    Adding Layer      : Bottom Solder
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D55
-    D56
-    D57
-    D58
-    D59
-    D60
-    D61
-    D62
-    D63
-    D64
-    D65
-    D66
-    D67
-    D68
-*************************************************************
-
-*************************************************************
-Generating : Bottom Overlay
-      File : AlarmShield.GBO
-
-    Adding Layer      : Bottom Overlay
-
-
-Used DCodes :
-    D15
-*************************************************************
-
-*************************************************************
-Generating : Top Solder
-      File : AlarmShield.GTS
-
-    Adding Layer      : Top Solder
-
-    Adding Layer      : Top Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
     D19
     D20
     D21
@@ -206,27 +61,5 @@ Used DCodes :
     D44
     D45
     D46
-    D47
-    D48
-    D49
-    D50
-    D51
-    D52
-    D53
-    D54
-    D55
-    D56
-    D57
-    D58
-    D59
-    D60
-    D61
-    D62
-    D63
-    D64
-    D65
-    D66
-    D67
-    D68
 *************************************************************
 
