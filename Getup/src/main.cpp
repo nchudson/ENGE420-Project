@@ -24,12 +24,59 @@
 //
 //------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------
+// Pin defines
+#define BTN_PLUS     (A1)
+#define BTN_MINUS    (A2)
+#define BTN_SEL      (A3)
+#define BTN_SET      (A4)
+
+#define QI_CHG       (A0)
+#define BATT_LOW     (A5)
+
+#define ACCEL_IRQ1   (10)
+#define ACCEL_IRQ2   (9)
+
+#define BT_CS        (8)
+#define BT_IRQ       (7)
+
+#define LED_WAIT     (6)
+#define BUZZER       (4)
+
+// I2C address defines
+#define ACCEL_ADDR 
+
+// Program value defines
+#define BUTTON_UPDATE_TIME  (20)
+#define RTC_UPDATE_TIME     (86400000)
+#define ACCEL_UPDATE_TIME   (100)
 //     ___      __   ___  __   ___  ___  __
 //      |  \ / |__) |__  |  \ |__  |__  /__`
 //      |   |  |    |___ |__/ |___ |    .__/
 //
 //------------------------------------------------------------------------------
+
+typedef enum {
+  TIMER_BUTTONS,
+  TIMER_RTC,
+  TIMER_ACCEL,
+  TIMER_BATT,
+  TIMER_SPEAKER,
+  TIMER_LED,
+  TIMER_FSM,
+  NUM_TIMERS
+} timer_t;
+
+typedef enum {
+  SETUP,
+  NUM_STATES,
+} fsm_t;
+
+typedef enum {
+  SET_ALARM,
+  NUM_ITEMS
+} menu_items_t;
+
+
 
 //------------------------------------------------------------------------------
 //                __          __        ___  __
@@ -51,14 +98,25 @@
 //     |    \__/ |__) |___ | \__,
 //
 //------------------------------------------------------------------------------
-// void setup() {
-// 
-// }
-// void loop() {
-// 
-// }
+
+//==============================================================================
 int main() {
-  //System and driver initialization
+  // Local variables
+
+  uint64_t delta = sysTime;
+  uint64_t timers[NUM_TIMERS];
+
+  RTC_DS3231 rtc = new RTC_DS3231();
+  Adafruit_LiquidCrystal lcd = new Adafruit_LiquidCrystal();
+  Adafruit_ADXL343 accel = new Adafruit_ADXL343();
+
+
+  // System and driver initialization
+  rtc.begin();
+  lcd.begin();
+  accel.begin();
+
+
 
  while(true) {
 
@@ -78,3 +136,10 @@ int main() {
 //     | .__/ |  \ .__/
 //
 //------------------------------------------------------------------------------
+
+//==============================================================================
+// Tick tock tick tock...
+//==============================================================================
+void SysTick_Handler () {
+  sysTime++;
+}
