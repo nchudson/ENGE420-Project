@@ -121,13 +121,12 @@ void setup() {
   uint64_t timers[NUM_TIMERS];
 
   RTC_DS3231 rtc;
-  Adafruit_LiquidCrystal lcd(0);
+  Adafruit_LiquidCrystal lcd(LCD_ADDR);
   Adafruit_ADXL343 accel(ACCEL_ID);
   Adafruit_BluefruitLE_SPI ble(BT_CS, BT_IRQ);
 
 
   // System and driver initialization
-  SystemInit();
   rtc.begin();
   lcd.begin(LCD_WIDTH, LCD_HEIGHT);
   accel.begin(ACCEL_ADDR);
@@ -149,6 +148,7 @@ void setup() {
 
 
   digitalWrite(LED_WAIT, LOW);
+  tone(BUZZER, 880);
   lcd.setBacklight(LOW);
   lcd.print("Hello, World!");
 
