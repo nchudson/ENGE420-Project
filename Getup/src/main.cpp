@@ -12,7 +12,7 @@
 //   - Menu allows alarms and date to be edited:                   x
 // - Alarm rings when time reaches alarm time:                     x
 // - Alarm disabled when unit is placed on Qi pad                  x
-// - Alarm temporarily disabled on accelerometer shake:
+// - Alarm temporarily disabled on accelerometer shake:            x
 // - System wakes and sleeps at proper time:
 //------------------------------------------------------------------------------
 
@@ -108,7 +108,8 @@
 #define SECOND              (1)
 
 #define UPDATE_DELAY        (500)
-#define ALARM_REARM_DELAY   (10000)
+#define ALARM_REARM_DELAY   (60000)
+#define LCD_TIMEOUT         (10000)
 
 //------------------------------------------------------------------------------
 //     ___      __   ___  __   ___  ___  __
@@ -192,6 +193,7 @@ void setup() {
   rtc_ext.begin();
   rtc_int.begin();
   lcd.begin(LCD_WIDTH, LCD_HEIGHT);
+  accel.begin(ACCEL_ADDR);
   //wdt.enable(5000);
 
   //Pin configuration
@@ -221,10 +223,19 @@ void setup() {
   rtc_int.setAlarmSeconds((rtc_int.getSeconds() + 1) % 60);
   rtc_int.enableAlarm(rtc_int.MATCH_SS);
 
+  // Alarm initialization
   for(i = 0; i < NUM_ALARMS; i++) {
     alarms[i] = rtc_ext_time;
   }
 
+  // Accelerometer initialization
+  accel.writeRegister(ADXL343_REG_ACT_INACT_CTL, 0xE6);
+  accel.writeRegister(ADXL343_REG_THRESH_ACT, 0x10);
+  union int_config cfg;
+  cfg.value = 0x10;
+  accel.enableInterrupts(cfg);
+  cfg.value = 0x00;
+  accel.mapInterrupts(cfg);
 }
 
 //==============================================================================
@@ -248,6 +259,7 @@ void loop() {
   static uint64_t delta = 0;
   static uint64_t update_time = 0;
   static uint64_t alarm_rearm_time;
+  static uint64_t lcd_timeout;
   static uint64_t timers[NUM_TIMERS];
   static char* lcd_line_0 = new char[16];
   static char* lcd_line_1 = new char[16];
@@ -273,6 +285,7 @@ void loop() {
 
     for(i = 0; i < NUM_BUTTONS; i++) {
       buttons_d[i] = buttons[i];
+      if(buttons[i]) lcd_timeout = sys_time + LCD_TIMEOUT;
     }
 
     buttons[BTN_PLUS] = digitalRead(PIN_BTN_PLUS);
@@ -291,6 +304,18 @@ void loop() {
     timers[TIMER_RTC] = sys_time;
     rtc_ext_time = rtc_ext.now();
   }
+
+  delta = sys_time - timers[TIMER_ACCEL];
+  if(delta >= ACCEL_UPDATE_TIME) {
+    timers[TIMER_ACCEL] = sys_time;
+    if(accel.getX() > 100) {
+      shaking = 1;
+      lcd_timeout = sys_time + LCD_TIMEOUT;
+    }
+    else {
+      shaking = 0;
+    }
+  }
   
   delta = sys_time - timers[TIMER_QI];
   if(delta >= QI_UPDATE_TIME) {
@@ -308,6 +333,7 @@ void loop() {
     timers[TIMER_SPKR] = sys_time;
     if(alarm_ringing) {
       //tone(PIN_BUZZER, 440, 10);
+      lcd_timeout = sys_time + LCD_TIMEOUT;
     }
   }
 
@@ -329,6 +355,8 @@ void loop() {
     lcd.print(lcd_line_0);
     lcd.setCursor(0, 1);
     lcd.print(lcd_line_1);
+    if(sys_time < lcd_timeout) lcd.setBacklight(HIGH);
+    else lcd.setBacklight(LOW);
   }
 
   delta = sys_time - timers[TIMER_FSM];
@@ -682,7 +710,7 @@ void loop() {
       alarm_rearmed = 1;
       alarm_rearm_time = sys_time + ALARM_REARM_DELAY;
     }
-    if(sys_time >= alarm_rearm_time && alarm_rearmed) {
+    if((sys_time >= alarm_rearm_time) && alarm_rearmed) {
       alarm_ringing = 1;
     }
     if(charging) {
