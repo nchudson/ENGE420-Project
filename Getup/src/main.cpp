@@ -177,8 +177,9 @@ static DateTime alarms[NUM_ALARMS];
 //
 //------------------------------------------------------------------------------
 
-void button_isr();
 static char* to_weekday(uint8_t day_of_week);
+void button_isr();
+void rtc_isr();
 
 //------------------------------------------------------------------------------
 //      __        __          __
@@ -332,7 +333,7 @@ void loop() {
   if(delta >= SPKR_UPDATE_TIME) {
     timers[TIMER_SPKR] = sys_time;
     if(alarm_ringing) {
-      //tone(PIN_BUZZER, 440, 10);
+      tone(PIN_BUZZER, 440, 50);
       lcd_timeout = sys_time + LCD_TIMEOUT;
     }
   }
@@ -355,8 +356,14 @@ void loop() {
     lcd.print(lcd_line_0);
     lcd.setCursor(0, 1);
     lcd.print(lcd_line_1);
-    if(sys_time < lcd_timeout) lcd.setBacklight(HIGH);
-    else lcd.setBacklight(LOW);
+    if(sys_time < lcd_timeout) {
+      if(sleep_mode) change_sleep_mode = 1;
+      lcd.setBacklight(HIGH);
+    }
+    else {
+      if(!sleep_mode) change_sleep_mode = 1;
+      lcd.setBacklight(LOW);
+    }
   }
 
   delta = sys_time - timers[TIMER_FSM];
@@ -698,9 +705,10 @@ void loop() {
   if(delta >= ALM_UPDATE_TIME) {
     timers[TIMER_ALM] = sys_time;
     for(i = 0; i < NUM_ALARMS; i++) {
-      if((rtc_ext_time.hour() == alarms[i].hour()) &&
+      if(alarms_en[i] && (rtc_ext_time.hour() == alarms[i].hour()) &&
         (rtc_ext_time.minute() == alarms[i].minute()) &&
-        (rtc_ext_time.second() == alarms[i].second())) {
+        (rtc_ext_time.second() <= alarms[i].second() + 2)) {
+          lcd_timeout = sys_time + LCD_TIMEOUT;
           alarm_armed = 1;
           alarm_ringing = 1;
         }
@@ -720,25 +728,22 @@ void loop() {
     }
   }
 
-  if(change_sleep_mode) {
-    sleep_mode = !sleep_mode;
-    change_sleep_mode = 0;
-    if(sleep_mode) {
-      attachInterrupt(digitalPinToInterrupt(PIN_BTN_PLUS), button_isr, RISING);
-      attachInterrupt(digitalPinToInterrupt(PIN_BTN_MINUS), button_isr, RISING);
-      attachInterrupt(digitalPinToInterrupt(PIN_BTN_SEL), button_isr, RISING);
-      attachInterrupt(digitalPinToInterrupt(PIN_BTN_SET), button_isr, RISING);
-      rtc_int.setAlarmSeconds((rtc_int.getSeconds()) % 60);
-      rtc_int.standbyMode();
-    }
-    else {
-      detachInterrupt(digitalPinToInterrupt(PIN_BTN_PLUS));
-      detachInterrupt(digitalPinToInterrupt(PIN_BTN_MINUS));
-      detachInterrupt(digitalPinToInterrupt(PIN_BTN_SEL));
-      detachInterrupt(digitalPinToInterrupt(PIN_BTN_SET));
-      rtc_int.disableAlarm();
-    }
+  if(sleep_mode) {
+    attachInterrupt(digitalPinToInterrupt(PIN_BTN_PLUS), button_isr, RISING);
+    attachInterrupt(digitalPinToInterrupt(PIN_BTN_MINUS), button_isr, RISING);
+    attachInterrupt(digitalPinToInterrupt(PIN_BTN_SEL), button_isr, RISING);
+    attachInterrupt(digitalPinToInterrupt(PIN_BTN_SET), button_isr, RISING);
+    rtc_int.setAlarmSeconds((rtc_int.getSeconds()) + 1 % 60);
+    rtc_int.standbyMode();
   }
+  else {
+    detachInterrupt(digitalPinToInterrupt(PIN_BTN_PLUS));
+    detachInterrupt(digitalPinToInterrupt(PIN_BTN_MINUS));
+    detachInterrupt(digitalPinToInterrupt(PIN_BTN_SEL));
+    detachInterrupt(digitalPinToInterrupt(PIN_BTN_SET));
+    rtc_int.disableAlarm();
+  }
+  
 }
 
 
@@ -788,4 +793,7 @@ static char* to_weekday(uint8_t day_of_week) {
 //==============================================================================
 void button_isr() {
   change_sleep_mode = 1;
+}
+void rtc_isr() {
+
 }
