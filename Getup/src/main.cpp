@@ -6,12 +6,12 @@
 //------------------------------------------------------------------------------
 // TODO:
 // - Display shows current time, updating each second:             x
-// - Menu is navigable using buttons and has following structure:
-//   - Menu displays current date:
-//   - Menu displays current alarms and status:
-//   - Menu allows alarms and date to be edited:
-// - Alarm rings when time reaches alarm time:
-// - Alarm disabled when unit is placed on Qi pad:
+// - Menu is navigable using buttons and has following structure:  x
+//   - Menu displays current date:                                 x
+//   - Menu displays current alarms and status:                    x
+//   - Menu allows alarms and date to be edited:                   x
+// - Alarm rings when time reaches alarm time:                     x
+// - Alarm disabled when unit is placed on Qi pad                  x
 // - Alarm temporarily disabled on accelerometer shake:
 // - System wakes and sleeps at proper time:
 //------------------------------------------------------------------------------
@@ -74,8 +74,11 @@
 #define ACCEL_UPDATE_TIME   (100)
 #define QI_UPDATE_TIME      (100)
 #define BATT_UPDATE_TIME    (100)
+#define SPKR_UPDATE_TIME    (100)
+#define LED_UPDATE_TIME     (100)
 #define LCD_UPDATE_TIME     (250)
 #define FSM_UPDATE_TIME     (20)
+#define ALM_UPDATE_TIME     (20)
 
 #define NUM_ALARMS          (5)
 #define NUM_BUTTONS         (4)
@@ -96,10 +99,17 @@
 #define MO_LCD_POS_X        (10)
 #define DY_LCD_POS_X        (13)
 
+#define ALM_LCD_POS_Y       (1)
+#define ALM_HR_LCD_POS_X    (7)
+#define ALM_MIN_LCD_POS_X   (10)
+
 #define HOUR                (3600)
 #define MINUTE              (60)
 #define SECOND              (1)
+
 #define UPDATE_DELAY        (500)
+#define ALARM_REARM_DELAY   (10000)
+
 //------------------------------------------------------------------------------
 //     ___      __   ___  __   ___  ___  __
 //      |  \ / |__) |__  |  \ |__  |__  /__`
@@ -113,23 +123,25 @@ typedef enum {
   TIMER_ACCEL,
   TIMER_QI,
   TIMER_BATT,
-  TIMER_SPEAKER,
-  TIMER_PIN_LED,
+  TIMER_SPKR,
+  TIMER_LED,
   TIMER_LCD,
   TIMER_FSM,
+  TIMER_ALM,
   NUM_TIMERS
 } timers_t;
 
 typedef enum {
   MENU_DATE,
-  MENU_ALM,
   MENU_SET_DATE_HR,
   MENU_SET_DATE_MIN,
   MENU_SET_DATE_SEC,
   MENU_SET_DATE_YR,
   MENU_SET_DATE_MO,
   MENU_SET_DATE_DY,
-  MENU_ALM_SET,
+  MENU_ALM,
+  MENU_SET_ALM_HR,
+  MENU_SET_ALM_MIN,
   NUM_STATES,
 } fsm_t;
 
@@ -147,6 +159,7 @@ typedef enum {
 //
 //------------------------------------------------------------------------------
 static volatile uint8_t change_sleep_mode = 0;
+static uint32_t i;
 static RTC_DS3231 rtc_ext;
 static RTCZero rtc_int;
 static WatchdogSAMD wdt;
@@ -154,6 +167,7 @@ static Adafruit_LiquidCrystal lcd(LCD_ADDR);
 static Adafruit_ADXL343 accel(ACCEL_ID);
 static Adafruit_BluefruitLE_SPI ble(PIN_BT_CS, PIN_BT_IRQ);
 static DateTime rtc_ext_time;
+static DateTime alarms[NUM_ALARMS];
 
 //------------------------------------------------------------------------------
 //      __   __   __  ___  __  ___      __   ___  __
@@ -207,6 +221,10 @@ void setup() {
   rtc_int.setAlarmSeconds((rtc_int.getSeconds() + 1) % 60);
   rtc_int.enableAlarm(rtc_int.MATCH_SS);
 
+  for(i = 0; i < NUM_ALARMS; i++) {
+    alarms[i] = rtc_ext_time;
+  }
+
 }
 
 //==============================================================================
@@ -216,20 +234,25 @@ void loop() {
   // Local Variables.
   static uint8_t sleep_mode = 0;
   static uint8_t charging = 0;
+  static uint8_t shaking = 0;
+  static uint8_t cur_alarm = 0;
+  static uint8_t alarm_ringing = 0;
+  static uint8_t alarm_armed = 0;
+  static uint8_t alarm_rearmed = 0;
+  static uint8_t alarms_en[NUM_ALARMS];
   static uint8_t buttons[NUM_BUTTONS];
   static uint8_t buttons_d[NUM_BUTTONS];
   static uint8_t buttons_risen[NUM_BUTTONS];
   static uint32_t sys_time_tmp = 0;
-  static uint32_t i;
   static uint64_t sys_time = 0;
   static uint64_t delta = 0;
   static uint64_t update_time = 0;
+  static uint64_t alarm_rearm_time;
   static uint64_t timers[NUM_TIMERS];
   static char* lcd_line_0 = new char[16];
   static char* lcd_line_1 = new char[16];
   static fsm_t fsm_state = MENU_DATE;
   static DateTime time_tmp;
-  static DateTime alarms[NUM_ALARMS];
   static TimeSpan offset;
 
   // Get current millis() value and update 64-bit counter.
@@ -274,9 +297,28 @@ void loop() {
     timers[TIMER_QI] = sys_time;
     charging = !digitalRead(PIN_QI_CHG);
   }
+
   delta = sys_time - timers[TIMER_BATT];
   if(delta >= BATT_UPDATE_TIME) {
     timers[TIMER_BATT] = sys_time;
+  }
+
+  delta = sys_time - timers[TIMER_SPKR];
+  if(delta >= SPKR_UPDATE_TIME) {
+    timers[TIMER_SPKR] = sys_time;
+    if(alarm_ringing) {
+      //tone(PIN_BUZZER, 440, 10);
+    }
+  }
+
+  delta = sys_time - timers[TIMER_LED];
+  if(delta >= LED_UPDATE_TIME) {
+    if(alarm_armed || alarm_rearmed) {
+      digitalWrite(PIN_LED_WAIT, HIGH);
+    }
+    else {
+      digitalWrite(PIN_LED_WAIT, LOW);
+    }
   }
 
   delta = sys_time - timers[TIMER_LCD];
@@ -302,6 +344,9 @@ void loop() {
         if(buttons_risen[BTN_SET]) {
           time_tmp = rtc_ext_time;
           fsm_state = MENU_SET_DATE_HR;
+        }
+        else if(buttons_risen[BTN_SEL]) {
+          fsm_state = MENU_ALM;
         }
         break;
       case MENU_SET_DATE_HR:
@@ -538,6 +583,112 @@ void loop() {
           fsm_state = MENU_DATE;
         }
         break;
+      case MENU_ALM:
+        sprintf_P(lcd_line_0, "    %.2d:%.2d:%.2d    ",
+          rtc_ext_time.hour(), rtc_ext_time.minute(), rtc_ext_time.second());
+        sprintf_P(lcd_line_1, "Alrm %d %.2d:%.2d %s",
+          cur_alarm + 1, alarms[cur_alarm].hour(), alarms[cur_alarm].minute(),
+          alarms_en[cur_alarm] ? "on " : "off");
+        if(buttons_risen[BTN_PLUS]) {
+          cur_alarm = (cur_alarm + 1) % NUM_ALARMS;
+        }
+        else if(buttons_risen[BTN_MINUS]) {
+          alarms_en[cur_alarm] = !alarms_en[cur_alarm];
+        }
+        else if(buttons_risen[BTN_SET]) {
+          time_tmp = alarms[cur_alarm];
+          fsm_state = MENU_SET_ALM_HR;
+        }
+        else if(buttons_risen[BTN_SEL]) {
+          fsm_state = MENU_DATE;
+        }
+        break;
+      case MENU_SET_ALM_HR:
+        sprintf_P(lcd_line_0, "    %.2d:%.2d:%.2d    ",
+          rtc_ext_time.hour(), rtc_ext_time.minute(), rtc_ext_time.second());
+        sprintf_P(lcd_line_1, "Alrm %d %.2d:%.2d %s",
+          cur_alarm + 1, time_tmp.hour(), time_tmp.minute(),
+          alarms_en[cur_alarm] ? "on " : "off");
+        lcd.setCursor(ALM_HR_LCD_POS_X, ALM_LCD_POS_Y);
+        lcd.cursor();
+
+        if(buttons_risen[BTN_PLUS] ||
+          (buttons[BTN_PLUS] && (sys_time >= update_time))) {
+          offset = TimeSpan(HOUR - time_tmp.second());
+          time_tmp = time_tmp + offset;
+          update_time = sys_time + UPDATE_DELAY;
+        }
+        if(buttons_risen[BTN_MINUS] ||
+          (buttons[BTN_MINUS] && (sys_time >= update_time))) {
+          offset = TimeSpan(HOUR - time_tmp.second());
+          time_tmp = time_tmp - offset;
+          update_time = sys_time + UPDATE_DELAY;
+        }
+        else if(buttons_risen[BTN_SEL]) {
+          fsm_state = MENU_SET_ALM_MIN;
+        }
+        else if(buttons_risen[BTN_SET]) {
+          alarms[cur_alarm] = time_tmp;
+          lcd.noCursor();
+          fsm_state = MENU_ALM;
+        }
+        break;
+      case MENU_SET_ALM_MIN:
+        sprintf_P(lcd_line_0, "    %.2d:%.2d:%.2d    ",
+          rtc_ext_time.hour(), rtc_ext_time.minute(), rtc_ext_time.second());
+        sprintf_P(lcd_line_1, "Alrm %d %.2d:%.2d %s",
+          cur_alarm + 1, time_tmp.hour(), time_tmp.minute(),
+          alarms_en[cur_alarm] ? "on " : "off");
+        lcd.setCursor(ALM_MIN_LCD_POS_X, ALM_LCD_POS_Y);
+        lcd.cursor();
+
+        if(buttons_risen[BTN_PLUS] ||
+          (buttons[BTN_PLUS] && (sys_time >= update_time))) {
+          offset = TimeSpan(MINUTE - time_tmp.second());
+          time_tmp = time_tmp + offset;
+          update_time = sys_time + UPDATE_DELAY;
+        }
+        if(buttons_risen[BTN_MINUS] ||
+          (buttons[BTN_MINUS] && (sys_time >= update_time))) {
+          offset = TimeSpan(MINUTE - time_tmp.second());
+          time_tmp = time_tmp - offset;
+          update_time = sys_time + UPDATE_DELAY;
+        }
+        else if(buttons_risen[BTN_SEL]) {
+          fsm_state = MENU_SET_ALM_HR;
+        }
+        else if(buttons_risen[BTN_SET]) {
+          alarms[cur_alarm] = time_tmp;
+          lcd.noCursor();
+          fsm_state = MENU_ALM;
+        }
+        break;
+    }
+  }
+
+  delta = sys_time - timers[TIMER_ALM];
+  if(delta >= ALM_UPDATE_TIME) {
+    timers[TIMER_ALM] = sys_time;
+    for(i = 0; i < NUM_ALARMS; i++) {
+      if((rtc_ext_time.hour() == alarms[i].hour()) &&
+        (rtc_ext_time.minute() == alarms[i].minute()) &&
+        (rtc_ext_time.second() == alarms[i].second())) {
+          alarm_armed = 1;
+          alarm_ringing = 1;
+        }
+    }
+    if(shaking && alarm_ringing && !alarm_rearmed) {
+      alarm_ringing = 0;
+      alarm_rearmed = 1;
+      alarm_rearm_time = sys_time + ALARM_REARM_DELAY;
+    }
+    if(sys_time >= alarm_rearm_time && alarm_rearmed) {
+      alarm_ringing = 1;
+    }
+    if(charging) {
+      alarm_armed = 0;
+      alarm_ringing = 0;
+      alarm_rearmed = 0;
     }
   }
 
@@ -598,6 +749,7 @@ static char* to_weekday(uint8_t day_of_week) {
   }
   return weekday;
 }
+
 //------------------------------------------------------------------------------
 //        __   __   __
 //     | /__` |__) /__`
