@@ -376,6 +376,8 @@ void loop() {
         sprintf_P(lcd_line_1, " %s %.4d-%.2d-%.2d ",
           to_weekday(rtc_ext_time.dayOfTheWeek()), rtc_ext_time.year(),
           rtc_ext_time.month(), rtc_ext_time.day());
+        // sprintf_P(lcd_line_1, "x:%.2dy:%.2dz:%.2d",
+        //   accel.getX(), accel.getY(), accel.getZ());
         if(buttons_risen[BTN_SET]) {
           time_tmp = rtc_ext_time;
           fsm_state = MENU_SET_DATE_HR;
@@ -707,9 +709,10 @@ void loop() {
     for(i = 0; i < NUM_ALARMS; i++) {
       if(alarms_en[i] && (rtc_ext_time.hour() == alarms[i].hour()) &&
         (rtc_ext_time.minute() == alarms[i].minute()) &&
-        (rtc_ext_time.second() <= alarms[i].second() + 2)) {
+        (rtc_ext_time.second() <= alarms[i].second() + 2)&& !alarm_armed) {
           lcd_timeout = sys_time + LCD_TIMEOUT;
           alarm_armed = 1;
+          alarm_rearmed = 0;
           alarm_ringing = 1;
         }
     }
